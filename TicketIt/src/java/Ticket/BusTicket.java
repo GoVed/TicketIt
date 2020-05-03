@@ -80,7 +80,7 @@ public class BusTicket implements TicketInterface {
         }
         catch(Exception e)
         {
-            System.out.println("error occured");
+            System.out.println("error occured"+e);
         }
         return path;
     }

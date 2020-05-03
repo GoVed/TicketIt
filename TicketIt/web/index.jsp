@@ -68,7 +68,7 @@
             div.border{
                 border: 0.5px solid gray;                
             }     
-            
+
         </style>
         <script>
             function ol() {
@@ -76,8 +76,9 @@
                 out = out + "<%=name%>";
                 var tname = "";
                 tname = "<%=name%>";
-                if (tname.length > 0)
-                    document.getElementById("loginCell").innerHTML = tname;
+                if (tname.length > 0){
+                    document.getElementById("loginCell").innerHTML = tname;                    
+                }
                 if (<%=x%>)
                     window.location.href = out;
 
@@ -88,6 +89,15 @@
                 tname = "<%=name%>";
                 if (tname.length > 0)
                     window.location.href = out + "?name=" + tname + "&type=bus";
+                else
+                    window.location.href = "login.jsp";
+            }
+            function buyMovie() {
+                var out = "buyTicket.jsp";
+                var tname = "";
+                tname = "<%=name%>";
+                if (tname.length > 0)
+                    window.location.href = out + "?name=" + tname + "&type=movie";
                 else
                     window.location.href = "login.jsp";
             }
@@ -111,19 +121,22 @@
                 </div>
 
                 <div class="cell" style='text-align:right'>
-                    <button onclick='login()' id="loginCell">Login</button>
+                    <button onclick='login()' id="loginCell">Login</button>                    
                 </div>                
             </div>
         </div>
         <hr>
-        
+
         <div class="table halfWidth border">
-            
+
             <div class="row">
                 <div class="cell">Bus Ticket</div>
                 <div class="cell"><button onclick="buyBus()">Buy</button></div>
             </div>
-
+            <div class="row">
+                <div class="cell">Movie Ticket</div>
+                <div class="cell"><button onclick="buyMovie()">Buy</button></div>
+            </div>
         </div>
 
     </body>

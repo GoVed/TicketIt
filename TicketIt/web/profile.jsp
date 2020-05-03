@@ -55,21 +55,44 @@
         </style>
     </head>
     <body>
-        <h1>Hello <%=name%></h1><hr>
+        <div class='table fullWidth'>
+            <div class="row">
+                <div class="cell" style='text-align:left'><h1>Hello <%=name%></h1></div>
+                <div class="cell" style="text-align:right"><a href='index.jsp'><Button>Logout</Button></a></div>
+            </div>
+        </div><hr>
         <br>
         <P>
             <%
-                ResultSet rs = stm.executeQuery("select * from boughtticket where username='" + name + "'");
+                ResultSet rs = stm.executeQuery("select * from boughtticket where username='" + name + "' and type=0");
 
-                out.println("<div class='table halfWidth border'>Your Tickets");
-                
+                out.println("<div class='table halfWidth border'>Your Bus Tickets");
+
                 while (rs.next()) {
                     out.println("<div class='row'>");
                     if (rs.getInt("type") == 0) {
-                        
-                        ResultSet ir = stm2.executeQuery("select * from ticketbus where id='" + rs.getInt("ticketid") + "'");                        
+
+                        ResultSet ir = stm2.executeQuery("select * from ticketbus where id='" + rs.getInt("ticketid") + "'");
                         while (ir.next()) {
-                            out.println("<div class='cell'>"+ir.getString("start") + " to " + ir.getString("end") + "  :   " + ir.getDouble("price") + "</div><div class='cell'><a href='showTicket.jsp?bid=" + ir.getInt("id") + "&type=0&name=" + name + "'><button>Show</button></a></div>");
+                            out.println("<div class='cell'>" + ir.getString("start") + " to " + ir.getString("end") + "  :   " + ir.getDouble("price") + "</div><div class='cell'><a href='showTicket.jsp?bid=" + ir.getInt("id") + "&type=0&name=" + name + "'><button>Show</button></a></div>");
+                        }
+                    }
+                    out.println("</div>");
+                }
+                out.println("</div><br>");
+                
+                rs = stm.executeQuery("select * from boughtticket where username='" + name + "' and type=1");
+                rs.beforeFirst();
+                out.println("<div class='table halfWidth border'>Your Movie Tickets");
+                
+                while (rs.next()) {
+                    
+                    out.println("<div class='row'>");                    
+                    if (rs.getInt("type") == 1) {
+
+                        ResultSet ir = stm2.executeQuery("select * from ticketmovie where id='" + rs.getInt("ticketid") + "'");
+                        while (ir.next()) {
+                            out.println("<div class='cell'>" + ir.getString("movieName") + " at " + ir.getString("theaterName") + "  :   " + ir.getDouble("price") + "</div><div class='cell'><a href='showTicket.jsp?bid=" + ir.getInt("id") + "&type=1&name=" + name + "'><button>Show</button></a></div>");
                         }
                     }
                     out.println("</div>");
