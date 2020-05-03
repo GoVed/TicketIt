@@ -1,0 +1,6 @@
+Bus Ticket
+ID:1003
+Name:test
+From:Mumbai
+To:Delhi
+Price paid:2000.0

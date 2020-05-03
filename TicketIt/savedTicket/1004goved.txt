@@ -1,0 +1,6 @@
+Bus Ticket
+ID:1004
+Name:goved
+From:Rajkot
+To:Surat
+Price paid:1300.0

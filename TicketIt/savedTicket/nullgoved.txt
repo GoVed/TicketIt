@@ -1,0 +1,6 @@
+Bus Ticket
+ID:null
+Name:goved
+From:Ahmedabad
+To:Mumbai
+Price paid:1500.0

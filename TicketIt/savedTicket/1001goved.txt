@@ -1,0 +1,6 @@
+Bus Ticket
+ID:1001
+Name:goved
+From:Ahmedabad
+To:Mumbai
+Price paid:1500.0
